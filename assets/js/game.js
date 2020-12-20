@@ -35,12 +35,12 @@ var fightOrSkip = function() {
 var fight = function(enemy) {
     // keep track of who goes first
     var isPlayerTurn = true;
-​
+
     // randomly change turn order
     if (Math.random() > 0.5) {
         isPlayerTurn = false;
     }
-​
+
     while (playerInfo.health > 0 && enemy.health > 0) {
         if (isPlayerTurn) {
             // ask player if they'd like to fight or skip using fightOrSkip function
@@ -48,9 +48,9 @@ var fight = function(enemy) {
                 // if true, leave fight by breaking loop
                 break;
             }
-    ​
+
             var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-    ​
+
             // remove enemy's health by subtracting the amount we set in the damage variable
             enemy.health = Math.max(0, enemy.health - damage);
             console.log(
@@ -63,14 +63,14 @@ var fight = function(enemy) {
                 enemy.health +
                 " health remaining."
             );
-    ​
+
             // check enemy's health
             if (enemy.health <= 0) {
                 window.alert(enemy.name + " has died!");
-    ​
+
                 // award player money for winning
                 playerInfo.money = playerInfo.money + 20;
-    ​
+
                 // leave while() loop since enemy is dead
                 break;
             } else {
@@ -79,7 +79,7 @@ var fight = function(enemy) {
             // player gets attacked first
         } else {
             var damage = randomNumber(enemy.attack - 3, enemy.attack);
-    ​
+
             // remove player's health by subtracting the amount we set in the damage variable
             playerInfo.health = Math.max(0, playerInfo.health - damage);
             console.log(
@@ -92,7 +92,7 @@ var fight = function(enemy) {
                 playerInfo.health +
                 " health remaining."
             );
-    ​
+
             // check player's health
             if (playerInfo.health <= 0) {
                 window.alert(playerInfo.name + " has died!");
@@ -142,7 +142,6 @@ var startGame = function() {
         }
         // if player isn't alive, stop the game
         else {
-            window.alert("You have lost your robot in battle! Game Over!");
             break;
         }
     }
@@ -159,7 +158,7 @@ var endGame = function() {
         window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
     }
     else {
-        window.alert("You've lost your robot in battle.");
+        window.alert("You've lost your robot in battle. Game Over!");
     }
 
     // ask player if they'd like to play again
